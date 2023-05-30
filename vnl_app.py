@@ -7,12 +7,45 @@ import plotly.express as px
 
 st.set_page_config(layout="wide")
 
+# CSS for tables
+
+hide_table_row_index = """
+            <style>
+            thead tr th:first-child {display:none}
+            tbody th {display:none}
+            </style>   """
+
+center_heading_text = """
+    <style>
+        .col_heading   {text-align: center !important}
+    </style>          """
+    
+center_row_text = """
+    <style>
+        td  {text-align: center !important}
+    </style>      """
+
+# Inject CSS with Markdown
+
+st.markdown(hide_table_row_index, unsafe_allow_html=True)
+st.markdown(center_heading_text, unsafe_allow_html=True) 
+st.markdown(center_row_text, unsafe_allow_html=True) 
+
+heading_properties = [('font-size', '16px'),('text-align', 'center'),
+                      ('color', '#353b3c'),  ('font-weight', 'bold'),
+                      ('background', '#a4bfeb'),('border', '0.8px solid')]
+
+cell_properties = [('font-size', '16px'),('text-align', 'center')]
+
+dfstyle = [{"selector": "th", "props": heading_properties},
+               {"selector": "td", "props": cell_properties}]
+
 header = st.container()
 general_stats, teams_details, stats_by_position = st.tabs(['General stats', 'Teams details',  'Stats by Position'])
 # get_df_sets() - get from standings the amount of sets won and lost by each team, with these two values we calculate the amount of sets played  
 def get_df_sets(df_scorers):
     
-    standings = pd.read_html("https://en.volleyballworld.com/volleyball/competitions/vnl-2022/standings/women/#advanced")
+    standings = pd.read_html("https://en.volleyballworld.com/volleyball/competitions/vnl-2023/standings/women/#advanced")
     
     df1 = standings[0]['Unnamed: 1_level_0']
     
@@ -156,18 +189,17 @@ def load_scorers():
     
     url = "https://en.volleyballworld.com/volleyball/competitions/vnl-2023/statistics/women/best-scorers/"
     
-    best_scorers = pd.read_html(url)
-    
-    best_scorers = best_scorers[0]
+    best_scorers = pd.read_html(url)[0]
     
     best_scorers = best_scorers.rename(columns={
                 'Shirt NumberShirt': 'ShirtNumber',
                 'Player NamePlayer':'Player', 
                 'TeamTeam':'Team',
+                'PointsPts':'Total Points',
                 'Attack PointsA Pts':'Attack Points', 
                 'Block PointsB Pts':'Block Points', 
-                'Serve PointsS Pts':'Serve Points',
-                'PointsPts':'Total Points'
+                'Serve PointsS Pts':'Serve Points'
+
     })
     
     return best_scorers
@@ -190,7 +222,7 @@ def get_attackers():
         'TotalTA':'TotalAttempts'
     })
     
-    df = best_attackers.loc[(best_attackers['TotalAttempts'] > 0)]
+    df = best_attackers[(best_attackers['TotalAttempts'] > 0)]
 
     df = df.drop(columns=['ShirtNumber'])
     
@@ -217,7 +249,7 @@ def get_receivers():
     
     })
     
-    df = best_receivers.loc[(best_receivers['TotalAttempts'] > 0)]
+    df = best_receivers[(best_receivers['TotalAttempts'] > 0)]
     
     df = df.drop(columns=['ShirtNumber'])
     #AgGrid(df)
@@ -242,7 +274,7 @@ def get_diggers():
         'TotalTA':'TotalAttempts'
     })
     
-    df = best_diggers.loc[(best_diggers['Digs'] > 0)]
+    df = best_diggers[(best_diggers['Digs'] > 0)]
     
     df = df.drop(columns=['ShirtNumber'])
     #AgGrid(df) 
@@ -266,7 +298,7 @@ def get_blockers():
          'Efficiency %Eff':'Efficiency%', 
          'TotalTA':'TotalAttempts'
     })
-    df = best_blockers.loc[(best_blockers['TotalAttempts'] > 0)]
+    df = best_blockers[(best_blockers['TotalAttempts'] > 0)]
     
     df = df.drop(columns=['ShirtNumber'])
     #AgGrid(df)
@@ -289,30 +321,31 @@ def get_servers():
         'Success %Success %':'Success%', 
         'TotalTA':'TotalAttempts'
     })
-    df = best_servers.loc[(best_servers['ServePoints'] > 0)]
+    df = best_servers[(best_servers['ServePoints'] > 0)]
     
     df = df.drop(columns=['ShirtNumber','Attempts'])         
     return df
 
 def players_by_team(df_scorers, sigla):  
     
-    players = df_scorers.loc[df_scorers['Team']==sigla]
-    
+    players = df_scorers[df_scorers['Team'] == sigla]
+    #st.dataframe(players.sum())
     del players['ShirtNumber']
         
     st.markdown(""" **Team Stats** """)
-    team_totals = players.groupby("Team").sum()
+    #team_totals = players.sum()
+    
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Total Points", team_totals['Total Points'])
-    col2.metric("Attack Points", team_totals['Attack Points'])
-    col3.metric("Block Points", team_totals['Block Points'])
-    col4.metric("Serve Points", team_totals['Serve Points'])
+    col1.metric("Total Points", players['Total Points'].sum())
+    col2.metric("Attack Points", players['Attack Points'].sum())
+    col3.metric("Block Points", players['Block Points'].sum())
+    col4.metric("Serve Points", players['Serve Points'].sum())
 
     st.markdown(""" **Players Stats** """)
     del players['Team']
     col1, col2 = st.columns(2)
     with col1:
-         st.dataframe(players)
+         st.dataframe(players.set_index('Player'))
     with col2:
          gen_bar_chart_scorers(players)
 
@@ -320,7 +353,9 @@ def show_skill_tables(code):
     
     st.markdown(""" **Attacking** """)
     df_attack = get_attackers()
-    st.dataframe(df_attack[df_attack['Team'] == code].set_index('Player'))
+    df_attack = df_attack[df_attack['Team'] == code]
+    del df_attack['Team']
+    st.dataframe(df_attack.set_index('Player'))
     
     st.markdown(""" **Reception** """)
     df_rec = get_receivers()
@@ -342,9 +377,9 @@ def show_skill_tables(code):
 
 def gen_bar_chart_scorers(df):
     
-    min_points = 30
+    min_points = 0
     df = df[df['Total Points'] > min_points].sort_values('Total Points', ascending=True)
-    fig = px.bar(df, title = 'Best Scorers', x = 'Total Points', y = 'Player', text ='Total Points', color = 'Total Points', color_continuous_scale = px.colors.sequential.Viridis, height=450, width=550)
+    fig = px.bar(df, title = 'Best Scorers', x = 'Total Points', y = 'Player', text ='Total Points', color = 'Total Points', color_continuous_scale = px.colors.sequential.Viridis, height=450, width=500)
     fig.update_layout(xaxis_title="", yaxis_title="", font = dict(family = 'Sans Serif', size = 12), showlegend=True)
     fig.update_yaxes(showgrid=False)
     fig.update_coloraxes(showscale=False)
@@ -378,7 +413,7 @@ with general_stats:
 
     df_scorers = load_scorers()
     
-    df_scorers = df_scorers.filter(items=['Team', 'Attack Points','Block Points', 'Serve Points']).groupby("Team").sum()
+    df_scorers = df_scorers.filter(items=['Team', 'Attack Points','Block Points', 'Serve Points', 'Total Points']).groupby("Team").sum()
 
     df_scorers = df_scorers.reset_index()
     
@@ -403,7 +438,7 @@ with general_stats:
                                             'USA':'United States',
                                             'NED':'Netherlands',
                                             'CHN':'China',
-                                            'BEL':'Belgium',
+                                            'CRO':'Croatia',
                                             'SRB':'Serbia',
                                             'CAN':'Canada',
                                             'POL':'Poland',
@@ -432,13 +467,15 @@ with teams_details:
     
     team = st.selectbox(
      '',
-         ('Brazil', 'Bulgaria', 'Canada', 'China', 'Croatia', 'Dominican Republic',
-          'Germany', 'Italy', 'Japan','Korea', 'Netherlands','Poland', 'Serbia','Thailand', 'Türkiye','United States',
+         ('Canada', 'China','Brazil', 'Bulgaria', 
+          'Croatia', 'Dominican Republic','Germany','Italy', 
+          'Japan','Korea', 'Netherlands','Poland', 
+          'Serbia','Thailand', 'Türkiye','United States',
          ))
 
     st.write('You selected:', team)
     df_scorers = load_scorers()
-    
+
     if team == 'Brazil':
         code = 'BRA' 
         players_by_team(df_scorers, code)
