@@ -5,40 +5,10 @@ import pandas as pd
 import plotly.graph_objs as go
 import plotly.express as px
 
-st.set_page_config(layout="wide")
-
-# CSS for tables
-
-hide_table_row_index = """
-            <style>
-            thead tr th:first-child {display:none}
-            tbody th {display:none}
-            </style>   """
-
-center_heading_text = """
-    <style>
-        .col_heading   {text-align: center !important}
-    </style>          """
-    
-center_row_text = """
-    <style>
-        td  {text-align: center !important}
-    </style>      """
-
-# Inject CSS with Markdown
-
-st.markdown(hide_table_row_index, unsafe_allow_html=True)
-st.markdown(center_heading_text, unsafe_allow_html=True) 
-st.markdown(center_row_text, unsafe_allow_html=True) 
-
-heading_properties = [('font-size', '16px'),('text-align', 'center'),
-                      ('color', '#353b3c'),  ('font-weight', 'bold'),
-                      ('background', '#a4bfeb'),('border', '0.8px solid')]
-
-cell_properties = [('font-size', '16px'),('text-align', 'center')]
-
-dfstyle = [{"selector": "th", "props": heading_properties},
-               {"selector": "td", "props": cell_properties}]
+st.set_page_config("🏐"
+    'VNL 23',
+    layout="wide"
+)
 
 header = st.container()
 general_stats, teams_details, stats_by_position = st.tabs(['General stats', 'Teams details',  'Stats by Position'])
