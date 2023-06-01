@@ -177,7 +177,7 @@ def load_scorers():
         'Duarte Alecrim Diana':'Diana Duarte',
         'Da Silva Ana Carolina': 'Ana Carolina',
         'Rios Naiane De Almeida':'Naiane Rios',
-        'Da Silva Lorrayna':'Lorrayna Da Silva'
+        'Da Silva Lorrayna':'Lorrayna Da Silva',
         'Vasques Lais':'Lais Vasques',
         'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
         'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
