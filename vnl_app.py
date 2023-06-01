@@ -183,20 +183,15 @@ def load_scorers():
         'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
         'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
         'Ratzke Roberta Silva':'Roberta Ratzke',
-        #'Barbosa De Souza Karina':'Karina Barbosa',
         'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
         'Araujo Natália':'Natália Araujo',
         'Viezel Lorena Giovana' : 'Lorena Viezel',
         'Nascimento Kisy' : 'Kisy Nascimento',
         'Bergmann Julia Isabelle':'Julia Bergmann',
-        #'Araujo De Souza Mayany Cristina':'Mayany Cristina',
         'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
         'Braga Guimaraes Gabriela':'Gabi Guimarães',
-        #'Gambatto Kudiess Julia':'Julia Kudiess',
         'Montibeller Rosamaria':'Rosamaria Montibeller',
-        'Lemes Santos Tainara':'Tainara Santos',
-        #'De Oliveira Saad Gattaz Caroline':'Carol Gattaz'
-
+        'Lemes Santos Tainara':'Tainara Santos'
     })
     
     return best_scorers
@@ -223,6 +218,26 @@ def get_attackers():
 
     df = df.drop(columns=['ShirtNumber'])
     
+    df['Player'] = df['Player'].replace({
+        'Duarte Alecrim Diana':'Diana Duarte',
+        'Da Silva Ana Carolina': 'Ana Carolina',
+        'Rios Naiane De Almeida':'Naiane Rios',
+        'Da Silva Lorrayna':'Lorrayna Da Silva',
+        'Vasques Lais':'Lais Vasques',
+        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
+        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
+        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
+        'Ratzke Roberta Silva':'Roberta Ratzke',
+        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
+        'Araujo Natália':'Natália Araujo',
+        'Viezel Lorena Giovana' : 'Lorena Viezel',
+        'Nascimento Kisy' : 'Kisy Nascimento',
+        'Bergmann Julia Isabelle':'Julia Bergmann',
+        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
+        'Braga Guimaraes Gabriela':'Gabi Guimarães',
+        'Montibeller Rosamaria':'Rosamaria Montibeller',
+        'Lemes Santos Tainara':'Tainara Santos'
+    })
     return df
     #AgGrid(df, width=890)
     #st.dataframe(df)
@@ -243,13 +258,32 @@ def get_receivers():
         'Average per matchaverage-per-match':'AveragePerMatch',
         'Success %Success %':'Success%', 
         'TotalTA':'TotalAttempts'
-    
     })
     
     df = best_receivers[(best_receivers['TotalAttempts'] > 0)]
     
     df = df.drop(columns=['ShirtNumber'])
-    #AgGrid(df)
+   
+    df['Player'] = df['Player'].replace({
+        'Duarte Alecrim Diana':'Diana Duarte',
+        'Da Silva Ana Carolina': 'Ana Carolina',
+        'Rios Naiane De Almeida':'Naiane Rios',
+        'Da Silva Lorrayna':'Lorrayna Da Silva',
+        'Vasques Lais':'Lais Vasques',
+        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
+        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
+        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
+        'Ratzke Roberta Silva':'Roberta Ratzke',
+        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
+        'Araujo Natália':'Natália Araujo',
+        'Viezel Lorena Giovana' : 'Lorena Viezel',
+        'Nascimento Kisy' : 'Kisy Nascimento',
+        'Bergmann Julia Isabelle':'Julia Bergmann',
+        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
+        'Braga Guimaraes Gabriela':'Gabi Guimarães',
+        'Montibeller Rosamaria':'Rosamaria Montibeller',
+        'Lemes Santos Tainara':'Tainara Santos'
+    })
     return df
     
 def get_diggers():
@@ -274,7 +308,29 @@ def get_diggers():
     df = best_diggers[(best_diggers['Digs'] > 0)]
     
     df = df.drop(columns=['ShirtNumber'])
-    #AgGrid(df) 
+
+    df['Player'] = df['Player'].replace({
+        'Duarte Alecrim Diana':'Diana Duarte',
+        'Da Silva Ana Carolina': 'Ana Carolina',
+        'Rios Naiane De Almeida':'Naiane Rios',
+        'Da Silva Lorrayna':'Lorrayna Da Silva',
+        'Vasques Lais':'Lais Vasques',
+        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
+        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
+        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
+        'Ratzke Roberta Silva':'Roberta Ratzke',
+        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
+        'Araujo Natália':'Natália Araujo',
+        'Viezel Lorena Giovana' : 'Lorena Viezel',
+        'Nascimento Kisy' : 'Kisy Nascimento',
+        'Bergmann Julia Isabelle':'Julia Bergmann',
+        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
+        'Braga Guimaraes Gabriela':'Gabi Guimarães',
+        'Montibeller Rosamaria':'Rosamaria Montibeller',
+        'Lemes Santos Tainara':'Tainara Santos'
+    })
+
+
     return df
 
     
@@ -298,7 +354,28 @@ def get_blockers():
     df = best_blockers[(best_blockers['TotalAttempts'] > 0)]
     
     df = df.drop(columns=['ShirtNumber'])
-    #AgGrid(df)
+
+    df['Player'] = df['Player'].replace({
+        'Duarte Alecrim Diana':'Diana Duarte',
+        'Da Silva Ana Carolina': 'Ana Carolina',
+        'Rios Naiane De Almeida':'Naiane Rios',
+        'Da Silva Lorrayna':'Lorrayna Da Silva',
+        'Vasques Lais':'Lais Vasques',
+        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
+        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
+        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
+        'Ratzke Roberta Silva':'Roberta Ratzke',
+        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
+        'Araujo Natália':'Natália Araujo',
+        'Viezel Lorena Giovana' : 'Lorena Viezel',
+        'Nascimento Kisy' : 'Kisy Nascimento',
+        'Bergmann Julia Isabelle':'Julia Bergmann',
+        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
+        'Braga Guimaraes Gabriela':'Gabi Guimarães',
+        'Montibeller Rosamaria':'Rosamaria Montibeller',
+        'Lemes Santos Tainara':'Tainara Santos'
+    })
+
     return df
 
 def get_servers():
@@ -320,7 +397,29 @@ def get_servers():
     })
     df = best_servers[(best_servers['ServePoints'] > 0)]
     
-    df = df.drop(columns=['ShirtNumber','Attempts'])         
+    df = df.drop(columns=['ShirtNumber'])     
+    
+    df['Player'] = df['Player'].replace({
+        'Duarte Alecrim Diana':'Diana Duarte',
+        'Da Silva Ana Carolina': 'Ana Carolina',
+        'Rios Naiane De Almeida':'Naiane Rios',
+        'Da Silva Lorrayna':'Lorrayna Da Silva',
+        'Vasques Lais':'Lais Vasques',
+        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
+        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
+        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
+        'Ratzke Roberta Silva':'Roberta Ratzke',
+        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
+        'Araujo Natália':'Natália Araujo',
+        'Viezel Lorena Giovana' : 'Lorena Viezel',
+        'Nascimento Kisy' : 'Kisy Nascimento',
+        'Bergmann Julia Isabelle':'Julia Bergmann',
+        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
+        'Braga Guimaraes Gabriela':'Gabi Guimarães',
+        'Montibeller Rosamaria':'Rosamaria Montibeller',
+        'Lemes Santos Tainara':'Tainara Santos'
+    })
+        
     return df
 
 def players_by_team(df_scorers, sigla):  
