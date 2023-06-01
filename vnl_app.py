@@ -48,7 +48,7 @@ def get_skills_per_sets(teams):
     teams['AttackPerSet'] = attack_per_set('AttackPerSet')
     teams['BlockPerSet'] = block_per_set('BlockPerSet')
     teams['ServePerSet'] = serve_per_set('ServePerSet')
-    teams['ExcRecPerSet'] = serve_per_set('ExcRecPerSet')
+    teams['ExcRecPerSet'] = rec_per_set('ExcRecPerSet')
     teams['DigPerSet'] = dig_per_set('DigPerSet')
     
     return teams
@@ -70,7 +70,7 @@ def interactive_plot_attack(teams):
     data = [trace1]
     layout = go.Layout(
         font=dict(family='Courier New, monospace', size=12, color='#000000'),
-        title='Attacks/Set')
+        title='Attacks/Sets')
     
     fig = go.Figure(data = data, layout = layout)
     st.plotly_chart(fig)
@@ -91,7 +91,7 @@ def interactive_plot_block(teams):
     data = [trace1]
     layout = go.Layout(
         font=dict(family='Courier New, monospace', size=12, color='#000000'),
-        title='Blocks/Set')
+        title='Blocks/Sets')
     
     fig = go.Figure(data = data, layout = layout)
     st.plotly_chart(fig)
@@ -110,7 +110,7 @@ def interactive_plot_serve(teams):
     data = [trace1]
     layout = go.Layout(
         font=dict(family='Courier New, monospace', size=12, color='#000000'),
-        title='Aces/Set')
+        title='Aces/Sets')
 
     fig = go.Figure(data = data, layout = layout)
     st.plotly_chart(fig)
@@ -129,7 +129,7 @@ def interactive_plot_digs(teams):
     data = [trace1]
     layout = go.Layout(
         font=dict(family='Courier New, monospace', size=12, color='#000000'),
-        title='Digs/Set')
+        title='Digs/Sets')
 
     fig = go.Figure(data = data, layout = layout)
     st.plotly_chart(fig)
@@ -149,7 +149,7 @@ def interactive_plot_receptions(teams):
     data = [trace1]
     layout = go.Layout(
         font=dict(family='Courier New, monospace', size=12, color='#000000'),
-        title='Excellent Reception/Set')
+        title='Excellent Receptions/Sets')
 
     fig = go.Figure(data = data, layout = layout)
     st.plotly_chart(fig)
