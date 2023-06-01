@@ -172,6 +172,33 @@ def load_scorers():
 
     })
     
+    
+    best_scorers['Player'] = best_scorers['Player'].replace({
+        'Duarte Alecrim Diana':'Diana Duarte',
+        'Da Silva Ana Carolina': 'Ana Carolina',
+        'Rios Naiane De Almeida':'Naiane Rios',
+        'Da Silva Lorrayna':'Lorrayna Da Silva'
+        'Vasques Lais':'Lais Vasques',
+        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
+        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
+        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
+        'Ratzke Roberta Silva':'Roberta Ratzke',
+        #'Barbosa De Souza Karina':'Karina Barbosa',
+        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
+        'Araujo Natália':'Natália Araujo',
+        'Viezel Lorena Giovana' : 'Lorena Viezel',
+        'Nascimento Kisy' : 'Kisy Nascimento',
+        'Bergmann Julia Isabelle':'Julia Bergmann',
+        #'Araujo De Souza Mayany Cristina':'Mayany Cristina',
+        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
+        'Braga Guimaraes Gabriela':'Gabi Guimarães',
+        #'Gambatto Kudiess Julia':'Julia Kudiess',
+        'Montibeller Rosamaria':'Rosamaria Montibeller',
+        'Lemes Santos Tainara':'Tainara Santos',
+        #'De Oliveira Saad Gattaz Caroline':'Carol Gattaz'
+
+    })
+    
     return best_scorers
 
 def get_attackers():
