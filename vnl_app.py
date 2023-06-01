@@ -546,7 +546,7 @@ with stats_by_position:
     position = st.selectbox("Choose a position: ", ["MB","OH","O","L"])
     df_players = df_players.query("Position == @position")
     
-    cols = ['Player','Team','Attack Points', 'Block Points', 'Serve Points']
+    cols = ['Player','Team','Total Points','Attack Points', 'Block Points', 'Serve Points']
     df = pd.merge(df_players, df_scorers, on=['Player','Team'])
     df = df.filter(items=cols).set_index('Player')
     
@@ -554,24 +554,28 @@ with stats_by_position:
     if (position == "OH") or (position == "MB") or (position == "O"):
        st.markdown(""" **Scorers** """)
        st.dataframe(df)
-       st.markdown(""" **Attacking** """)
+       st.markdown(""" **Attack** """)
        df_att = get_attackers()
        df1 = pd.merge(df_players, df_att, on=['Player','Team'])
        st.dataframe(df1.set_index('Player'))
        df_blk = get_blockers()
-       st.markdown(""" **Blocking**""")
+       st.markdown(""" **Block**""")
        df2 = pd.merge(df_players, df_blk, on=['Player','Team'])
        st.dataframe(df2.set_index('Player'))
        if (position == "OH"):
     	   df_rec = get_receivers()
-    	   st.markdown(""" **Receiving**""")
+    	   st.markdown(""" **Reception**""")
     	   df = pd.merge(df_players, df_rec, on=['Player','Team'])
     	   st.dataframe(df.set_index('Player'))           
    
     elif position == 'L':
     	df_rec = get_receivers()
-    	st.markdown(""" **Receiving**""")
+    	st.markdown(""" **Reception**""")
     	df = pd.merge(df_players, df_rec, on=['Player','Team'])
+    	st.dataframe(df.set_index('Player'))
+    	df_dig = get_diggers()
+    	st.markdown(""" **Defense**""")
+    	df = pd.merge(df_players, df_dig, on=['Player','Team'])
     	st.dataframe(df.set_index('Player'))
   
     
