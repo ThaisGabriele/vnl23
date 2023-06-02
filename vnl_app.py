@@ -175,6 +175,7 @@ def load_scorers():
     
     best_scorers['Player'] = best_scorers['Player'].replace({
         'Duarte Alecrim Diana':'Diana Duarte',
+        'Nobre Cardoso G Filomeno Lara':'Lara NObre',
         'Da Silva Ana Carolina': 'Ana Carolina',
         'Rios Naiane De Almeida':'Naiane Rios',
         'Da Silva Lorrayna':'Lorrayna Da Silva',
@@ -220,6 +221,7 @@ def get_attackers():
     
     df['Player'] = df['Player'].replace({
         'Duarte Alecrim Diana':'Diana Duarte',
+        'Nobre Cardoso G Filomeno Lara':'Lara Nobre',
         'Da Silva Ana Carolina': 'Ana Carolina',
         'Rios Naiane De Almeida':'Naiane Rios',
         'Da Silva Lorrayna':'Lorrayna Da Silva',
@@ -267,6 +269,7 @@ def get_receivers():
     df['Player'] = df['Player'].replace({
         'Duarte Alecrim Diana':'Diana Duarte',
         'Da Silva Ana Carolina': 'Ana Carolina',
+        'Nobre Cardoso G Filomeno Lara':'Lara Nobre',
         'Rios Naiane De Almeida':'Naiane Rios',
         'Da Silva Lorrayna':'Lorrayna Da Silva',
         'Vasques Lais':'Lais Vasques',
@@ -312,6 +315,7 @@ def get_diggers():
     df['Player'] = df['Player'].replace({
         'Duarte Alecrim Diana':'Diana Duarte',
         'Da Silva Ana Carolina': 'Ana Carolina',
+        'Nobre Cardoso G Filomeno Lara':'Lara Nobre',
         'Rios Naiane De Almeida':'Naiane Rios',
         'Da Silva Lorrayna':'Lorrayna Da Silva',
         'Vasques Lais':'Lais Vasques',
@@ -358,6 +362,7 @@ def get_blockers():
     df['Player'] = df['Player'].replace({
         'Duarte Alecrim Diana':'Diana Duarte',
         'Da Silva Ana Carolina': 'Ana Carolina',
+        'Nobre Cardoso G Filomeno Lara':'Lara Nobre',
         'Rios Naiane De Almeida':'Naiane Rios',
         'Da Silva Lorrayna':'Lorrayna Da Silva',
         'Vasques Lais':'Lais Vasques',
@@ -402,6 +407,7 @@ def get_servers():
     df['Player'] = df['Player'].replace({
         'Duarte Alecrim Diana':'Diana Duarte',
         'Da Silva Ana Carolina': 'Ana Carolina',
+        'Nobre Cardoso G Filomeno Lara':'Lara Nobre',
         'Rios Naiane De Almeida':'Naiane Rios',
         'Da Silva Lorrayna':'Lorrayna Da Silva',
         'Vasques Lais':'Lais Vasques',
