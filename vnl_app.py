@@ -58,8 +58,7 @@ def interactive_plot_attack(teams):
     teams = teams.sort_values("AttackPerSet", ascending=False).head(10)
     
     st.markdown(""" **General Stats** """)
-    st.dataframe(teams.set_index('Team'))
-
+    #st.dataframe(teams.set_index('Team'))
     trace1 = go.Bar(
                 y = teams.AttackPerSet,
                 x = teams.Team,
@@ -552,6 +551,8 @@ with general_stats:
     df_scorers = get_df_sets(df_scorers)
      
     new_df = get_skills_per_sets(df_scorers)
+    
+    st.dataframe(new_df.set_index('Team'))
 
     interactive_plot_attack(new_df)
 
