@@ -31,7 +31,7 @@ def get_df_sets(df_scorers):
     
     res = res.assign(Sets = lambda n : n['Won'] + n['Lost'])
 
-    res = res.filter(['Team','Sets'])
+    res = res.filter(['Team','Won', 'Lost','Sets'])
     
     df = pd.merge(df_scorers, res, on="Team")
       
@@ -57,7 +57,7 @@ def interactive_plot_attack(teams):
     
     teams = teams.sort_values("AttackPerSet", ascending=False).head(10)
     
-    st.markdown(""" **General Stats** """)
+    #st.markdown(""" **General Stats** """)
     #st.dataframe(teams.set_index('Team'))
     trace1 = go.Bar(
                 y = teams.AttackPerSet,
@@ -69,7 +69,7 @@ def interactive_plot_attack(teams):
     data = [trace1]
     layout = go.Layout(
         font=dict(family='Courier New, monospace', size=12, color='#000000'),
-        title='Attacks/Sets')
+        title='Pts. de ataques/Sets')
     
     fig = go.Figure(data = data, layout = layout)
     st.plotly_chart(fig)
@@ -90,7 +90,7 @@ def interactive_plot_block(teams):
     data = [trace1]
     layout = go.Layout(
         font=dict(family='Courier New, monospace', size=12, color='#000000'),
-        title='Blocks/Sets')
+        title='Bloqueios/Sets')
     
     fig = go.Figure(data = data, layout = layout)
     st.plotly_chart(fig)
@@ -128,7 +128,7 @@ def interactive_plot_digs(teams):
     data = [trace1]
     layout = go.Layout(
         font=dict(family='Courier New, monospace', size=12, color='#000000'),
-        title='Digs/Sets')
+        title='Defesas/Sets')
 
     fig = go.Figure(data = data, layout = layout)
     st.plotly_chart(fig)
@@ -148,7 +148,7 @@ def interactive_plot_receptions(teams):
     data = [trace1]
     layout = go.Layout(
         font=dict(family='Courier New, monospace', size=12, color='#000000'),
-        title='Excellent Receptions/Sets')
+        title='Recepções perfeitas/Sets')
 
     fig = go.Figure(data = data, layout = layout)
     st.plotly_chart(fig)
@@ -172,27 +172,6 @@ def load_scorers():
     })
     
     
-    best_scorers['Player'] = best_scorers['Player'].replace({
-        'Duarte Alecrim Diana':'Diana Duarte',
-        'Nobre Cardoso G Filomeno Lara':'Lara NObre',
-        'Da Silva Ana Carolina': 'Ana Carolina',
-        'Rios Naiane De Almeida':'Naiane Rios',
-        'Da Silva Lorrayna':'Lorrayna Da Silva',
-        'Vasques Lais':'Lais Vasques',
-        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
-        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
-        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
-        'Ratzke Roberta Silva':'Roberta Ratzke',
-        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
-        'Araujo Natália':'Natália Araujo',
-        'Viezel Lorena Giovana' : 'Lorena Viezel',
-        'Nascimento Kisy' : 'Kisy Nascimento',
-        'Bergmann Julia Isabelle':'Julia Bergmann',
-        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
-        'Braga Guimaraes Gabriela':'Gabi Guimarães',
-        'Montibeller Rosamaria':'Rosamaria Montibeller',
-        'Lemes Santos Tainara':'Tainara Santos'
-    })
     
     return best_scorers
 
@@ -218,27 +197,7 @@ def get_attackers():
 
     df = df.drop(columns=['ShirtNumber'])
     
-    df['Player'] = df['Player'].replace({
-        'Duarte Alecrim Diana':'Diana Duarte',
-        'Nobre Cardoso G Filomeno Lara':'Lara Nobre',
-        'Da Silva Ana Carolina': 'Ana Carolina',
-        'Rios Naiane De Almeida':'Naiane Rios',
-        'Da Silva Lorrayna':'Lorrayna Da Silva',
-        'Vasques Lais':'Lais Vasques',
-        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
-        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
-        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
-        'Ratzke Roberta Silva':'Roberta Ratzke',
-        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
-        'Araujo Natália':'Natália Araujo',
-        'Viezel Lorena Giovana' : 'Lorena Viezel',
-        'Nascimento Kisy' : 'Kisy Nascimento',
-        'Bergmann Julia Isabelle':'Julia Bergmann',
-        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
-        'Braga Guimaraes Gabriela':'Gabi Guimarães',
-        'Montibeller Rosamaria':'Rosamaria Montibeller',
-        'Lemes Santos Tainara':'Tainara Santos'
-    })
+   
     return df
     #AgGrid(df, width=890)
     #st.dataframe(df)
@@ -265,27 +224,7 @@ def get_receivers():
     
     df = df.drop(columns=['ShirtNumber'])
    
-    df['Player'] = df['Player'].replace({
-        'Duarte Alecrim Diana':'Diana Duarte',
-        'Da Silva Ana Carolina': 'Ana Carolina',
-        'Nobre Cardoso G Filomeno Lara':'Lara Nobre',
-        'Rios Naiane De Almeida':'Naiane Rios',
-        'Da Silva Lorrayna':'Lorrayna Da Silva',
-        'Vasques Lais':'Lais Vasques',
-        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
-        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
-        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
-        'Ratzke Roberta Silva':'Roberta Ratzke',
-        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
-        'Araujo Natália':'Natália Araujo',
-        'Viezel Lorena Giovana' : 'Lorena Viezel',
-        'Nascimento Kisy' : 'Kisy Nascimento',
-        'Bergmann Julia Isabelle':'Julia Bergmann',
-        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
-        'Braga Guimaraes Gabriela':'Gabi Guimarães',
-        'Montibeller Rosamaria':'Rosamaria Montibeller',
-        'Lemes Santos Tainara':'Tainara Santos'
-    })
+
     return df
     
 def get_diggers():
@@ -311,27 +250,6 @@ def get_diggers():
     
     df = df.drop(columns=['ShirtNumber'])
 
-    df['Player'] = df['Player'].replace({
-        'Duarte Alecrim Diana':'Diana Duarte',
-        'Da Silva Ana Carolina': 'Ana Carolina',
-        'Nobre Cardoso G Filomeno Lara':'Lara Nobre',
-        'Rios Naiane De Almeida':'Naiane Rios',
-        'Da Silva Lorrayna':'Lorrayna Da Silva',
-        'Vasques Lais':'Lais Vasques',
-        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
-        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
-        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
-        'Ratzke Roberta Silva':'Roberta Ratzke',
-        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
-        'Araujo Natália':'Natália Araujo',
-        'Viezel Lorena Giovana' : 'Lorena Viezel',
-        'Nascimento Kisy' : 'Kisy Nascimento',
-        'Bergmann Julia Isabelle':'Julia Bergmann',
-        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
-        'Braga Guimaraes Gabriela':'Gabi Guimarães',
-        'Montibeller Rosamaria':'Rosamaria Montibeller',
-        'Lemes Santos Tainara':'Tainara Santos'
-    })
 
 
     return df
@@ -358,28 +276,6 @@ def get_blockers():
     
     df = df.drop(columns=['ShirtNumber'])
 
-    df['Player'] = df['Player'].replace({
-        'Duarte Alecrim Diana':'Diana Duarte',
-        'Da Silva Ana Carolina': 'Ana Carolina',
-        'Nobre Cardoso G Filomeno Lara':'Lara Nobre',
-        'Rios Naiane De Almeida':'Naiane Rios',
-        'Da Silva Lorrayna':'Lorrayna Da Silva',
-        'Vasques Lais':'Lais Vasques',
-        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
-        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
-        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
-        'Ratzke Roberta Silva':'Roberta Ratzke',
-        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
-        'Araujo Natália':'Natália Araujo',
-        'Viezel Lorena Giovana' : 'Lorena Viezel',
-        'Nascimento Kisy' : 'Kisy Nascimento',
-        'Bergmann Julia Isabelle':'Julia Bergmann',
-        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
-        'Braga Guimaraes Gabriela':'Gabi Guimarães',
-        'Montibeller Rosamaria':'Rosamaria Montibeller',
-        'Lemes Santos Tainara':'Tainara Santos'
-    })
-
     return df
 
 def get_servers():
@@ -403,33 +299,14 @@ def get_servers():
     
     df = df.drop(columns=['ShirtNumber'])     
     
-    df['Player'] = df['Player'].replace({
-        'Duarte Alecrim Diana':'Diana Duarte',
-        'Da Silva Ana Carolina': 'Ana Carolina',
-        'Nobre Cardoso G Filomeno Lara':'Lara Nobre',
-        'Rios Naiane De Almeida':'Naiane Rios',
-        'Da Silva Lorrayna':'Lorrayna Da Silva',
-        'Vasques Lais':'Lais Vasques',
-        'Zalewski Daroit Moreira Priscila' : 'Priscila Daroit',
-        'Alexandre Costa Nunes Nyeme Victoria': 'Nyeme Nunes',
-        'Silva Carneiro Macris Fernanda':  'Macris Carneiro',
-        'Ratzke Roberta Silva':'Roberta Ratzke',
-        'Menezes Oliveira de Souza Ana Cristina':'Ana Cristina',
-        'Araujo Natália':'Natália Araujo',
-        'Viezel Lorena Giovana' : 'Lorena Viezel',
-        'Nascimento Kisy' : 'Kisy Nascimento',
-        'Bergmann Julia Isabelle':'Julia Bergmann',
-        'Geraldo Teixeira Lorenne':'Lorenne Teixeira',
-        'Braga Guimaraes Gabriela':'Gabi Guimarães',
-        'Montibeller Rosamaria':'Rosamaria Montibeller',
-        'Lemes Santos Tainara':'Tainara Santos'
-    })
+
         
     return df
 
 def players_by_team(df_scorers, sigla):  
     
     players = df_scorers[df_scorers['Team'] == sigla]
+  
     #st.dataframe(players.sum())
     del players['ShirtNumber']
         
@@ -480,7 +357,7 @@ def gen_bar_chart_scorers(df):
     
     min_points = 0
     df = df[df['Total Points'] > min_points].sort_values('Total Points', ascending=True)
-    fig = px.bar(df, title = 'Best Scorers', x = 'Total Points', y = 'Player', text ='Total Points', color = 'Total Points', color_continuous_scale = px.colors.sequential.Viridis, height=450, width=500)
+    fig = px.bar(df, title = 'Brasil - Maiores pontuadoras', x = 'Total Points', y = 'Player', text ='Total Points', color = 'Total Points', color_continuous_scale = px.colors.sequential.Viridis, height=450, width=500)
     fig.update_layout(xaxis_title="", yaxis_title="", font = dict(family = 'Sans Serif', size = 12), showlegend=True)
     fig.update_yaxes(showgrid=False)
     fig.update_coloraxes(showscale=False)
@@ -553,6 +430,29 @@ with general_stats:
     new_df = get_skills_per_sets(df_scorers)
     
     st.dataframe(new_df.set_index('Team'))
+    
+    df_attack_metrics= get_attackers()
+    
+    df_attack_metrics = df_attack_metrics.filter(items=['Team','AttackPoints','Errors','TotalAttempts']).groupby(['Team']).sum().reset_index()
+    
+    df_attack_metrics = (df_attack_metrics.assign(AtaquePerc = lambda x : round((df_attack_metrics['AttackPoints']/df_attack_metrics['TotalAttempts'])*100,1) ))
+    
+    df_attack_metrics = (df_attack_metrics.assign(AtaqueEf = lambda x : round(((df_attack_metrics['AttackPoints'] - df_attack_metrics['Errors']) /df_attack_metrics['TotalAttempts'])*100,1) ))
+   
+    st.markdown(""" **Métricas de ataque: aproveitamento (AtaquePerc) e eficiência (AtaqueEf)** """)
+    
+    st.dataframe(df_attack_metrics)
+    
+    df_rec_metrics= get_receivers()
+    
+    df_rec_metrics = df_rec_metrics.filter(items=['Team','Successful','Errors','TotalAttempts']).groupby(['Team']).sum().reset_index()
+    
+    df_rec_metrics = (df_rec_metrics.assign(RecPerfPerc = lambda x : round((df_rec_metrics['Successful']/df_rec_metrics['TotalAttempts'])*100,1) ))
+        
+    
+    st.markdown(""" **Métrica de recepção: aproveitamento de recepções perfeitas (RecPerfPerc)** """)
+    
+    st.dataframe(df_rec_metrics)
 
     interactive_plot_attack(new_df)
 
@@ -695,6 +595,12 @@ with stats_by_position:
        st.markdown(""" **Block**""")
        df2 = pd.merge(df_players, df_blk, on=['Player','Team'])
        st.dataframe(df2.set_index('Player'))
+       
+       df_dig = get_diggers()
+       st.markdown(""" **Defense**""")
+       df = pd.merge(df_players, df_dig, on=['Player','Team'])
+       st.dataframe(df.set_index('Player'))
+  
        if (position == "OH"):
     	   df_rec = get_receivers()
     	   st.markdown(""" **Reception**""")

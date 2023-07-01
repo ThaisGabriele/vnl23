@@ -1,18 +1,18 @@
 No.,Player,Position,Team
-1.0,Lara Nobre,MB,BRA
-2.0,Diana Duarte,MB,BRA
-4.0,Lorena Viezel,MB,BRA
-8.0,Macris Carneiro,S,BRA
-11.0,Maiara Basso,OH,BRA
-12.0,Ana Cristina,OH,BRA
-14.0,Natália Araujo,L,BRA
-15.0,Ana Carolina,MB,BRA
-16.0,Kisy Nascimento,O,BRA
-17.0,Julia Bergmann,OH,BRA
-18.0,Lorrayna Da Silva,O,BRA
-19.0,Tainara Santos,OH,BRA
+1.0,Nobre Cardoso G Filomeno Lara,MB,BRA
+2.0,Duarte Alecrim Diana,MB,BRA
+4.0,Viezel Lorena Giovana,MB,BRA
+8.0,Silva Carneiro Macris Fernanda,S,BRA
+11.0,Basso Maiara,OH,BRA
+12.0,Menezes Oliveira de Souza Ana Cristina,OH,BRA
+14.0,Araujo Natália,L,BRA
+15.0,Da Silva Ana Carolina,MB,BRA
+16.0,Nascimento Kisy,O,BRA
+17.0,Bergmann Julia Isabelle,OH,BRA
+18.0,Da Silva Lorrayna,O,BRA
+19.0,Lemes Santos Tainara,OH,BRA
 20.0,Vasques Lais,L,BRA
-21.0,Naiane Rios,S,BRA
+21.0,Rios Naiane De Almeida,S,BRA
 ,José Roberto Guimaraes,COACH,BRA
 4.0,Savard Vicky,OH,CAN
 5.0,Murmann Julia,L,CAN
@@ -238,3 +238,58 @@ No.,Player,Position,Team
 31.0,Perry Veronica,OH,USA
 36.0,Gates Madeleine,MB,USA
 ,Karch Kiraly,COACH,USA
+3.0,Alexandre Costa Nunes Nyeme Victoria,L,BRA
+5.0,Zalewski Daroit Moreira Priscila,OH,BRA
+6.0,Daher de Menezes Thaisa,MB,BRA
+7.0,Montibeller Rosamaria,OH,BRA
+9.0,Ratzke Roberta Silva,S,BRA
+10.0,Braga Guimaraes Gabriela,OH,BRA
+1.0,Stanchulova Iveta,OH,BUL
+3.0,Van Ryk Kiera,OH,CAN
+8.0,Ogoms Alicia,MB,CAN
+26.0,Pelland Quinn,S,CAN
+4.0,Butigan Božana,L,CRO
+9.0,Mlinar Lucija,OH,CRO
+13.0,Fabris Samanta,O,CRO
+16.0,Đapić Barbara,O,CRO
+2.0,Rodriguez Duran Yaneirys,OH,DOM
+3.0,Eve Mejia Lisvel Elisa,L,DOM
+5.0,Castillo Brenda,L,DOM
+8.0,Tapia Cruz Alondra Denis,O,DOM
+25.0,Martinez Caro Larysmer,OH,DOM
+18.0,Grozer Leana,OH,GER
+20.0,Weske Emilia,O,GER
+3.0,Villani Francesca,OH,ITA
+7.0,Fersino Eleonora,L,ITA
+23.0,Gennari Giulia,S,ITA
+1.0,Nagaoka Miyu,O,JPN
+4.0,Ishikawa Mayu,OH,JPN
+11.0,Yamada Nichika,MB,JPN
+12.0,Fukudome Satomi,L,JPN
+23.0,Miyabe Airi,OH,JPN
+1.0,Kim Daeun,OH,KOR
+7.0,Kim Jiwon,S,KOR
+4.0,Plak Celeste,O,NED
+7.0,Lohuis Juliet,MB,NED
+12.0,Bongaerts Britt,S,NED
+19.0,Daalderop Nika,OH,NED
+27.0,Scholten Iris,O,NED
+12.0,Szczyglowska Aleksandra,OH,POL
+23.0,Pierzchała Dominika,L,POL
+10.0,Ognjenovic Maja,S,SRB
+15.0,Stevanovic Jovana,MB,SRB
+18.0,Boškovic Tijana,O,SRB
+14.0,Chuewulim Sutadta,OH,THA
+15.0,Phomla Soraya,S,THA
+24.0,Boonlert Tichakorn,MB,THA
+5.0,Aykac Ayca,L,TUR
+8.0,Guveli Yasemin,MB,TUR
+9.0,Diken Meliha,O,TUR
+5.0,Frantti Alexandra,OH,USA
+7.0,Carlini Lauren,S,USA
+12.0,Thompson Jordan,O,USA
+14.0,Stevenson Anna,MB,USA
+15.0,Washington Haleigh,MB,USA
+18.0,Bajema Kara,OH,USA
+22.0,Plummer Kathryn,OH,USA
+23.0,Robinson Kelsey,OH,USA
